@@ -54,9 +54,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.onListenClick.bind(this)}>Start Mic</button>
-        <button id='stop'>Stop Mic</button>
+      <div className="text-output">
+        <button className="btn" onClick={this.onListenClick.bind(this)}>Start Mic</button>
+        <button className="btn" id='stop'>Stop Mic</button>
         <ParagDisplay textList={this.state.finalText} tempText={this.state.text}/>
       </div>
     );

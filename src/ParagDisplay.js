@@ -3,16 +3,14 @@ import React from 'react';
 const ParagDisplay = ({ textList, tempText }) => {
 	return (
 		<div>
-			<div>
 				{
 					textList.map((item, i) => {
 						return (
-							<p key={i}>{item}</p>
+							<span key={i}>{item}&spades; </span>
 						)
 					})	
 				}
-			</div>
-			<p>{tempText}</p>
+				<span>{tempText}</span>
 		</div>
 	);
 }

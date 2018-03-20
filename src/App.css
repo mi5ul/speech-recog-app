@@ -1,6 +1,9 @@
-.text-box {
-	font-size: 50px;
-	color: orange;
-	background-color: yellow;
+.text-output {
+	margin-top: 50px;
+	color: white;
+	font-size: 1.5em;
 }
 
+.btn {
+	margin: 0 20px;
+}

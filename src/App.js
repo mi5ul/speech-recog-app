@@ -11,6 +11,9 @@ import React, { Component } from 'react';
 import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone';
 import './App.css';
 import ParagDisplay from './ParagDisplay'
+import Footer from './Components/Footer/Footer';
+import NavBar from './Components/NavBar/NavBar';
+import Background from './Components/Background/Background';
 
 class App extends Component {
   constructor() {
@@ -55,9 +58,12 @@ class App extends Component {
   render() {
     return (
       <div className="text-output">
-        <button className="btn" onClick={this.onListenClick.bind(this)}>Start Mic</button>
-        <button className="btn" id='stop'>Stop Mic</button>
+        <NavBar />
+        <Background />
+        <button onClick={this.onListenClick.bind(this)}>Start Mic</button>
+        <button id='stop'>Stop Mic</button>
         <ParagDisplay textList={this.state.finalText} tempText={this.state.text}/>
+        <Footer />
       </div>
     );
   }

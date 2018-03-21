@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone';
-import ParagDisplay from './ParagDisplay'
+import DisplayText from './DisplayText'
 
 class SpeechRecognizer extends Component {
   constructor() {
     super()
     this.state = {
       text: '',
-      finalText: []
+      finalText: [],
+      translation: '',
     }
   }
 
@@ -15,7 +16,8 @@ class SpeechRecognizer extends Component {
     // Reset the state when the record button is pressed
     this.setState({
       text: '',
-      finalText: []
+      finalText: [],
+      translation: '',
     });
 
     fetch('http://localhost:3002/api/speech-to-text/token')
@@ -29,7 +31,6 @@ class SpeechRecognizer extends Component {
           extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
           format: true // optional - performs basic formatting on the results such as capitals an periods
         });
-        console.log(stream);
         stream.on('data', (data) => {
           this.setState({
             text: data.alternatives[0].transcript,
@@ -52,12 +53,11 @@ class SpeechRecognizer extends Component {
   }
 
   translateOnClick = () => {
-    let inputText = 'This is a very good party.';
+    let inputText = this.state.finalText.join('');
     fetch(`http://api.funtranslations.com/translate/australian.json?text=${inputText}`)
       .then(response => response.json())
       .then(obj => {
-        console.log(obj.contents.translated);
-        console.log(this.state.finalText);
+        this.setState({translation: obj.contents.translated});
       });
   }
 
@@ -67,7 +67,7 @@ class SpeechRecognizer extends Component {
         <button onClick={this.listenOnClick.bind(this)}>Start Mic</button>
         <button id='stop'>Stop Mic</button>
         <button onClick={this.translateOnClick}>Translate</button>
-        <ParagDisplay textList={this.state.finalText} tempText={this.state.text}/>
+        <DisplayText translation={this.state.translation} textList={this.state.finalText} tempText={this.state.text}/>
       </div>
     );
   }

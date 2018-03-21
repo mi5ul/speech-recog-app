@@ -59,10 +59,10 @@ class App extends Component {
     return (
       <div className="text-output">
         <NavBar />
+        <Background />
         <button onClick={this.onListenClick.bind(this)}>Start Mic</button>
         <button id='stop'>Stop Mic</button>
         <ParagDisplay textList={this.state.finalText} tempText={this.state.text}/>
-        <Background />
         <Footer />
       </div>
     );

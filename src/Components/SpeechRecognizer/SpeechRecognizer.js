@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone';
 import DisplayText from './DisplayText'
+import ButtonPanel from './ButtonPanel'
 
 class SpeechRecognizer extends Component {
   constructor() {
     super()
     this.state = {
-      text: '',
-      finalText: [],
+      text: '', // Text the API is "deciding on"
+      finalText: [], // Finalized API output
       translation: '',
+      voiceStream: null,
+      disableTranslate: true,
     }
   }
 
@@ -18,6 +21,7 @@ class SpeechRecognizer extends Component {
       text: '',
       finalText: [],
       translation: '',
+      disableTranslate: true,
     });
 
     fetch('http://localhost:3002/api/speech-to-text/token')
@@ -31,6 +35,7 @@ class SpeechRecognizer extends Component {
           extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
           format: true // optional - performs basic formatting on the results such as capitals an periods
         });
+        console.log(stream);
         stream.on('data', (data) => {
           this.setState({
             text: data.alternatives[0].transcript,
@@ -45,11 +50,25 @@ class SpeechRecognizer extends Component {
         stream.on('error', function(err) {
           console.log(err);
         });
-        document.querySelector('#stop').onclick = stream.stop.bind(stream);
+
+        this.setState({voiceStream: stream});
+
+        // document.querySelector('#stop').onclick = stream.stop.bind(stream);
+
       })
       .catch(function(error) {
           console.log(error);
       });
+  }
+
+  stopRecording = () => {
+    if (this.state.voiceStream != null) {
+      this.state.voiceStream.stop();
+      this.setState({
+        voiceStream: null,
+        disableTranslate: false,
+      });
+    }
   }
 
   translateOnClick = () => {
@@ -64,9 +83,12 @@ class SpeechRecognizer extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.listenOnClick.bind(this)}>Start Mic</button>
-        <button id='stop'>Stop Mic</button>
-        <button onClick={this.translateOnClick}>Translate</button>
+        <ButtonPanel 
+          listenOnClick={this.listenOnClick.bind(this)} 
+          translateOnClick={this.translateOnClick} 
+          stopRecordingOnClick={this.stopRecording}
+          disableTranslate={this.state.disableTranslate}
+        />
         <DisplayText translation={this.state.translation} textList={this.state.finalText} tempText={this.state.text}/>
       </div>
     );

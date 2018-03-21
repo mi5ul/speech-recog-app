@@ -12,7 +12,7 @@ import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone';
 import './App.css';
 import ParagDisplay from './ParagDisplay'
 import Footer from './Components/Footer/Footer';
-// import NavBar from './Components/NavBar/NavBar';
+import NavBar from './Components/NavBar/NavBar';
 import Background from './Components/Background/Background';
 
 class App extends Component {
@@ -58,7 +58,7 @@ class App extends Component {
   render() {
     return (
       <div className="text-output">
-        {/*<NavBar />*/}
+        <NavBar />
         <button onClick={this.onListenClick.bind(this)}>Start Mic</button>
         <button id='stop'>Stop Mic</button>
         <ParagDisplay textList={this.state.finalText} tempText={this.state.text}/>

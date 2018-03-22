@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import recognizeMic from 'watson-speech/speech-to-text/recognize-microphone';
 import DisplayText from './DisplayText'
 import ButtonPanel from './ButtonPanel'
+import './SpeechRecognizer.css';
 
 class SpeechRecognizer extends Component {
   constructor() {
@@ -82,7 +83,7 @@ class SpeechRecognizer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="speech-container">
         <ButtonPanel 
           listenOnClick={this.listenOnClick.bind(this)} 
           translateOnClick={this.translateOnClick} 

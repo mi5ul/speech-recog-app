@@ -77,7 +77,10 @@ class SpeechRecognizer extends Component {
     fetch(`http://api.funtranslations.com/translate/australian.json?text=${inputText}`)
       .then(response => response.json())
       .then(obj => {
-        this.setState({translation: obj.contents.translated});
+        this.setState({
+          translation: obj.contents.translated,
+          disableTranslate: true,
+        });
       });
   }
 

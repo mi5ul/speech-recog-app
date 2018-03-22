@@ -1,5 +1,56 @@
 .speech-container {
+	display: flex;
+	flex-direction: column;
 	height: 760px;
-	padding-top: 100px;
-	background: linear-gradient(rgb(19, 48, 95), white);
+	padding-top: 80px;
+	background: rgb(19, 48, 95);
+	overflow: auto;
+	font-size: 20px;
+	color: white;
+}
+
+/* BUTTON PANEL */
+
+.btn-panel {
+	margin-bottom: 80px;
+}
+
+button {
+	color: white;
+	background-color: transparent;
+	border: 2px solid white;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.record-btn {
+	height: 50px;
+	width: 50px;
+	border-radius: 100px;
+}
+
+.translate-btn {
+	height: 50px;
+	width: auto;
+	border-radius: 5px;
+}
+
+.translate-btn:disabled {
+	color: gray;
+	cursor: default;
+	border-color: gray;
+}
+
+/* DISPLAY TEXT */
+
+.speech-text {
+	margin: 0 10%;
+}
+
+.translation {
+	color: orange;
 }

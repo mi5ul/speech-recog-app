@@ -18,7 +18,7 @@ const NavBar = () => {
             <span className="navbar-toggler-bar"></span>
             <span className="navbar-toggler-bar"></span>
           </button>
-          <a className="navbar-brand" href="#0">Logo</a>
+          <a className="navbar-brand" href="#top">MS</a>
         </div>
         <div className="collapse navbar-collapse" id="navbarToggler">
           <ul className="navbar-nav ml-auto">
@@ -28,7 +28,7 @@ const NavBar = () => {
                 rel="tooltip noopener noreferrer" 
                 title="Follow us on Twitter" 
                 data-placement="bottom" 
-                href="https://twitter.com/CreativeTim" 
+                href="https://twitter.com/msul177" 
                 target="_blank"
               >
                 <i className="fa fa-twitter"></i>
@@ -39,35 +39,9 @@ const NavBar = () => {
               <a 
                 className="nav-link" 
                 rel="tooltip noopener noreferrer" 
-                title="Like us on Facebook" 
-                data-placement="bottom" 
-                href="https://www.facebook.com/CreativeTim" 
-                target="_blank"
-              >
-                <i className="fa fa-facebook-square"></i>
-                <p className="d-lg-none">Facebook</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a 
-                className="nav-link" 
-                rel="tooltip noopener noreferrer" 
-                title="Follow us on Instagram" 
-                data-placement="bottom" 
-                href="https://www.instagram.com/CreativeTimOfficial" 
-                target="_blank"
-              >
-                <i className="fa fa-instagram"></i>
-                <p className="d-lg-none">Instagram</p>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a 
-                className="nav-link" 
-                rel="tooltip noopener noreferrer" 
                 title="Star on GitHub" 
                 data-placement="bottom" 
-                href="https://www.github.com/CreativeTimOfficial/paper-kit" 
+                href="https://www.github.com/mi5ul" 
                 target="_blank"
               >
                 <i className="fa fa-github"></i>

@@ -10,7 +10,7 @@ const Background = () => {
           <div className="title-brand">
             <h1 className="presentation-title">Aussienator</h1>
           </div>
-          <h2 className="presentation-subtitle text-center">See how things get said "Down under".</h2>
+          <h2 className="presentation-subtitle text-center">See how things are said "Down under".</h2>
         </div>
       </div>
     </div>

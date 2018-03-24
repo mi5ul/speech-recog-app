@@ -1,8 +1,9 @@
 import React from 'react';
+import './SpeechRecognizer.css'
 
 const DisplayText = ({ translation, textList, tempText }) => {
 	return (
-		<div>
+		<div className="speech-text">
 			<div>
 				{
 					textList.map((item, i) => {
@@ -13,7 +14,7 @@ const DisplayText = ({ translation, textList, tempText }) => {
 				}
 				<span>{tempText}</span>
 			</div>
-			<div>{translation}</div>
+			<div className="translation">{translation}</div>
 		</div>
 	);
 }

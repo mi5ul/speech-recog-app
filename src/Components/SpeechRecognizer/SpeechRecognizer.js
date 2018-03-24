@@ -36,7 +36,6 @@ class SpeechRecognizer extends Component {
           extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
           format: true // optional - performs basic formatting on the results such as capitals an periods
         });
-        console.log(stream);
         stream.on('data', (data) => {
           this.setState({
             text: data.alternatives[0].transcript,
@@ -77,6 +76,7 @@ class SpeechRecognizer extends Component {
     fetch(`http://api.funtranslations.com/translate/australian.json?text=${inputText}`)
       .then(response => response.json())
       .then(obj => {
+        console.log(obj);
         this.setState({
           translation: obj.contents.translated,
           disableTranslate: true,

@@ -25,7 +25,7 @@ class SpeechRecognizer extends Component {
       disableTranslate: true,
     });
 
-    fetch('http://localhost:3002/api/speech-to-text/token')
+    fetch('https://speech-to-text-nodejs-server.mybluemix.net/api/speech-to-text/token')
       .then(function(response) {
           return response.text();
       })

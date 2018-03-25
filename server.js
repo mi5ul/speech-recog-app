@@ -10,7 +10,7 @@ const cors = require('cors');
 
 // allows environment properties to be set in a file named .env
 require('dotenv').load({ silent: true });
-
+console.log(process.env.SPEECH_TO_TEXT_USERNAME, process.env.SPEECH_TO_TEXT_PASSWORD)
 // on bluemix, enable rate-limiting and force https
 if (process.env.VCAP_SERVICES) {
   // enable rate-limiting

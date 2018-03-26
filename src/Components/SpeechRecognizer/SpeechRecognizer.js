@@ -69,7 +69,7 @@ class SpeechRecognizer extends Component {
 
   translateOnClick = () => {
     let inputText = this.state.finalText.join('');
-    fetch(`http://api.funtranslations.com/translate/australian.json?text=${inputText}`)
+    fetch(`https://api.funtranslations.com/translate/australian.json?text=${inputText}`)
       .then(response => response.json())
       .then(obj => {
         this.setState({

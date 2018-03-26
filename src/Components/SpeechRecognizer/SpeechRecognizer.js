@@ -25,7 +25,7 @@ class SpeechRecognizer extends Component {
       disableTranslate: true,
     });
 
-    fetch('http://localhost:3002/api/speech-to-text/token')
+    fetch('https://speech-to-text-nodejs-server.mybluemix.net/api/speech-to-text/token')
       .then(function(response) {
           return response.text();
       })
@@ -36,7 +36,6 @@ class SpeechRecognizer extends Component {
           extractResults: true, // convert {results: [{alternatives:[...]}], result_index: 0} to {alternatives: [...], index: 0}
           format: true // optional - performs basic formatting on the results such as capitals an periods
         });
-        console.log(stream);
         stream.on('data', (data) => {
           this.setState({
             text: data.alternatives[0].transcript,
@@ -51,11 +50,7 @@ class SpeechRecognizer extends Component {
         stream.on('error', function(err) {
           console.log(err);
         });
-
         this.setState({voiceStream: stream});
-
-        // document.querySelector('#stop').onclick = stream.stop.bind(stream);
-
       })
       .catch(function(error) {
           console.log(error);
